@@ -1,10 +1,9 @@
-var express = require('express');
-var app = express();
-// app.all(express.static("myApp")); // myApp will be the same folder name.
-app.get('/', function (req, res,next) {
-//  res.redirect('/myApp/src/index.html'); 
-res.redirect('http://localhost:6100/'); 
+const express = require('express');
+const app = express();
+const path = require('path')
 
-});
-app.listen(6111, ':::');
-console.log("MyProject Server is Listening on port 8080");
+const port = 6111;
+
+app.use(express.static(path.join(__dirname, 'myApp')));
+
+app.listen(port, () => console.log(`Example a listening on port ${port}!`))
